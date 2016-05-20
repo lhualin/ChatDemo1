@@ -23,9 +23,12 @@ public class MsgData {
             "2012-09-22 18:50:26", "2012-09-22 18:52:57",
             "2012-09-22 18:55:11", "2012-09-22 18:56:45",
             "2012-09-22 18:57:33", };
+    //实际可以从数据库中给chatMsgs添加数据
     public List<ChatMsg> setData(){
+        //是否自己发送
         Boolean msgtype;
         String name;
+        //头像
         int imgid;
         for (int i=0;i<12;i++){
             if(i%2==0){

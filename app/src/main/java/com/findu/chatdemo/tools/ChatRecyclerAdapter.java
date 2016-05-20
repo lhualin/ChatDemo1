@@ -27,6 +27,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
     }
 
     public int getItemViewType(int position) {
+        //根据是否自己发送设定viewtype
         if(chatMsgs.get(position).getMsgType()){
             return  0;
         }else{
@@ -37,6 +38,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view;
+        //根据不同的viewtype加载不同item布局
         if(viewType==0){
             view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.chat_listview_item_me, parent, false);
@@ -51,7 +53,6 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
     public void onBindViewHolder(ChatRecyclerAdapter.ViewHolder holder, int position) {
         holder.imgview.setBackgroundResource(chatMsgs.get(position).getImgid());
         holder.msg.setText(chatMsgs.get(position).getMessage());
-        Log.i("onBindViewHolder:????","chatMsgs.get(position).getMessage()__"+chatMsgs.get(position).getMessage()+"....at "+position);
     }
 
     @Override

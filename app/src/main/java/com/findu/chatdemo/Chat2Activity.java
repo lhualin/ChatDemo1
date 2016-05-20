@@ -50,12 +50,14 @@ public class Chat2Activity extends AppCompatActivity {
         addImgBtn=(ImageButton)findViewById(R.id.add_btom_btn);
     }
     public void innit(){
+        //得到数据
         MsgData msgData=new MsgData();
         chatMsgs=msgData.setData();
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         chatRecyclerAdapter=new ChatRecyclerAdapter(this,chatMsgs);
         recyclerView.setAdapter(chatRecyclerAdapter);
+        //滚动到最后一条
         recyclerView.scrollToPosition(chatRecyclerAdapter.getItemCount()-1);
 
         editText.addTextChangedListener(new TextWatcher() {
@@ -71,6 +73,7 @@ public class Chat2Activity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
+                //根据是否有输入内容决定显示添加按钮还是发送按钮
                 if(editText.getText().length()!=0){
                     addImgBtn.setVisibility(View.INVISIBLE);
                     sendBtn.setVisibility(View.VISIBLE);
@@ -84,19 +87,25 @@ public class Chat2Activity extends AppCompatActivity {
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //发送信息
                 sendMsg();
             }
         });
     }
     public void sendMsg(){
         String contString =editText.getText().toString();
+        //添加一条数据
         ChatMsg chatMsg=new ChatMsg("me",getDate(),contString,true,R.mipmap.me);
         chatMsgs.add(chatMsg);
+        //通知adapter数据改变
         chatRecyclerAdapter.notifyDataSetChanged();
+        //清空EditText
         editText.setText("");
+        //滚动到最后一条
         recyclerView.scrollToPosition(chatRecyclerAdapter.getItemCount()-1);
         getWindow().setSoftInputMode( WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
     }
+    //得到发送信息的时间
     private String getDate() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         return format.format(new Date());

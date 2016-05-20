@@ -55,6 +55,7 @@ public class ChatActivity extends AppCompatActivity {
             }
             @Override
             public void afterTextChanged(Editable s) {
+                //根据是否有输入内容决定显示添加按钮还是发送按钮
                 if(editText.getText().length()!=0){
                     addImgBtn.setVisibility(View.INVISIBLE);
                     sendBtn.setVisibility(View.VISIBLE);
