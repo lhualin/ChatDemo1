@@ -101,7 +101,9 @@ public class ChatAdapter extends BaseAdapter {
         viewHolder.msgtype = msgtype;
 
         viewHolder.imgview.setBackgroundResource(chatMsgs.get(position).getImgid());
+
         viewHolder.msg.setText(chatMsgs.get(position).getMessage());
+        Log.i("ChatAdapter","___________________________________"+chatMsgs.get(position).getMessage());
         return convertView;
     }
 

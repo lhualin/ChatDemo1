@@ -1,5 +1,7 @@
 package com.findu.chatdemo.tools;
 
+import android.text.SpannableString;
+
 import com.findu.chatdemo.R;
 
 import java.util.ArrayList;
@@ -40,7 +42,8 @@ public class MsgData {
                 name="other";
                 imgid=R.mipmap.other;
             }
-            ChatMsg chatMsg=new ChatMsg(name,dataArray[i],msgArray[i],msgtype,imgid);
+            SpannableString spannableString=new SpannableString(msgArray[i]);
+            ChatMsg chatMsg=new ChatMsg(name,dataArray[i],spannableString,msgtype,imgid);
             chatMsgs.add(chatMsg);
         }
         return chatMsgs;

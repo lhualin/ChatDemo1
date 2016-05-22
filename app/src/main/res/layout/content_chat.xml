@@ -89,13 +89,26 @@
                 android:visibility="invisible"/>
         </RelativeLayout>
 
-        <EditText
-            android:id="@+id/chat_btom_editext"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/enter_rl"
-            android:layout_toRightOf="@id/voice_btn"
-            android:textCursorDrawable="@null"/>
+            android:layout_toRightOf="@id/voice_btn">
+            <EditText
+                android:id="@+id/chat_btom_editext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textCursorDrawable="@null"
+                android:paddingRight="60dp" />
+            <ImageButton
+                android:id="@+id/emoji_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle"
+                android:src="@android:drawable/ic_menu_gallery"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
